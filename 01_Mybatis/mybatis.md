@@ -24,6 +24,8 @@
 5. 执行dao中的方法
 6. 释放资源
 
+<img src = "https://github.com/senhao1104/ssm/blob/master/01_Mybatis/%E8%B5%84%E6%96%99/images/2019-11-25-01.png" width = "60%">
+
 >注意：
 不要忘记在映射配置中告知mybatis要封装到哪个实体类中
 配置方式：指定实体类的全限定类名
