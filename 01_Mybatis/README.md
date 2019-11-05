@@ -32,9 +32,9 @@
 
 <img src = "https://github.com/senhao1104/ssm/blob/master/01_Mybatis/resources/images/2019-11-05_17-14-59.jpg" >
 
-<img src = "https://github.com/senhao1104/ssm/blob/master/01_Mybatis/resources/images/2019-11-05_17-16-07.jpg" >
+<img src = "https://github.com/senhao1104/ssm/blob/master/01_Mybatis/resources/images/2019-11-05_17-16-07.jpg" width = "60%" >
 
-<img src = "https://github.com/senhao1104/ssm/blob/master/01_Mybatis/resources/images/2019-11-05_17-16-25.jpg" >
+<img src = "https://github.com/senhao1104/ssm/blob/master/01_Mybatis/resources/images/2019-11-05_17-16-25.jpg" width = "60%" >
 
 ### 读取配置文件
 
