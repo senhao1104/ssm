@@ -2,7 +2,7 @@
 
 ## mybatis的环境搭建
 
-项目链接：
+项目链接：<a href="https://github.com/senhao1104/ssm/tree/master/01_Mybatis/01_mybatis_first">01_mybatis_first</a>
 
 1. 创建Maven工程并导入坐标 https://mvnrepository.com/
 2. 创建实体类和dao接口
@@ -87,8 +87,8 @@ return list;
 将UserDao.xml移除，在dao接口的方法上使用 @Select注解，并指定sql语句
 同时需要在 SqlMapConifg.xml 中的mapper配置时，使用class属性指定dao接口的全限定类名
 
-项目链接：
+项目链接：<a href="https://github.com/senhao1104/ssm/tree/master/01_Mybatis/02_mybatis_annotation">02_mybatis_annotation</a>
 
 ### mybatis 增删查改
 
-项目链接：
+项目链接：<a href="https://github.com/senhao1104/ssm/tree/master/01_Mybatis/03_mybatis_crud">03_mybatis_crud</a>
