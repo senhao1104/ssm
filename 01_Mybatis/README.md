@@ -2,6 +2,8 @@
 
 ## mybatis的环境搭建
 
+项目链接：
+
 1. 创建Maven工程并导入坐标 https://mvnrepository.com/
 2. 创建实体类和dao接口
 3. 创建mybatis的主配置文件 SqlMapConifg.xml
@@ -84,3 +86,9 @@ return list;
 
 将UserDao.xml移除，在dao接口的方法上使用 @Select注解，并指定sql语句
 同时需要在 SqlMapConifg.xml 中的mapper配置时，使用class属性指定dao接口的全限定类名
+
+项目链接：
+
+### mybatis 增删查改
+
+项目链接：
