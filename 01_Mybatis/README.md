@@ -92,3 +92,49 @@ return list;
 ### mybatis 增删查改
 
 项目链接：<a href="https://github.com/senhao1104/ssm/tree/master/01_Mybatis/03_mybatis_crud">03_mybatis_crud</a>
+
+### mybatis中的连接池
+
+我们在实际开发中都会使用连接池，应为它可以减少获取连接所消耗的时间
+
+mybatis连接池提供了3种方式的配置：
+
+主配置文件 SqlMapConifg.xml 中的DataSource标签，type属性表示采用哪种连接方式
+
+type属性取值：POOLED UNPLLOED JNDI
+
+### mybatis中的动态sql语句
+
+项目链接：<a href="https://github.com/senhao1104/ssm/tree/master/01_Mybatis/04_mybatis_dynamicSQL">04_mybatis_dynamicSQL</a>
+
+#### 标签：&lt;where&gt; &lt;if&gt; 
+
+```java
+<select id="findUserByCondition" parameterType="domain.user" resultType="domain.User">
+    select * from user
+    <where>
+        <if test="username != null">
+            and username = #{username}
+        </if>
+        <if test="sex != null">
+            and sex = #{sex}
+        </if>
+    </where>
+</select>
+```
+
+#### 标签：&lt;foreach&gt;
+
+```java
+<select id="findUserInIds" resultType="domain.User" parameterType="domain.QueryVo">
+<!-- select * from user where id in (1,2,3,4,5); -->
+    select * from user
+    <where>
+        <if test="ids != null and ids.size() > 0">
+            <foreach collection="ids" open="and id in ( " close=")" item="uid" separator=",">
+                #{uid}
+            </foreach>
+        </if>
+    </where>
+</select>
+```
