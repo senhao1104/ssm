@@ -1,5 +1,13 @@
 # Mybatis
 
+## mybatis的概述
+
+mybatis是一个持久层框架，用java编写的。
+
+它封装了jdbc操作的很多细节，使开发者只需要关注sql语句本身，而无需关注注册驱动，创建连接等繁杂过程。
+
+它使用了ORM思想实现了结果集的封装。
+
 ## mybatis的环境搭建
 
 项目链接：<a href="https://github.com/senhao1104/ssm/tree/master/01_Mybatis/01_mybatis_first">01_mybatis_first</a>
