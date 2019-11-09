@@ -82,18 +82,18 @@ while(resultSet.next()){
 return list;
 ```
 
-### mybatis基于注解的入门案例
+## mybatis基于注解的入门案例
 
 将UserDao.xml移除，在dao接口的方法上使用 @Select注解，并指定sql语句
 同时需要在 SqlMapConifg.xml 中的mapper配置时，使用class属性指定dao接口的全限定类名
 
 项目链接：<a href="https://github.com/senhao1104/ssm/tree/master/01_Mybatis/02_mybatis_annotation">02_mybatis_annotation</a>
 
-### mybatis 增删查改
+## mybatis 增删查改
 
 项目链接：<a href="https://github.com/senhao1104/ssm/tree/master/01_Mybatis/03_mybatis_crud">03_mybatis_crud</a>
 
-### mybatis中的连接池
+## mybatis中的连接池
 
 我们在实际开发中都会使用连接池，应为它可以减少获取连接所消耗的时间
 
@@ -103,11 +103,11 @@ mybatis连接池提供了3种方式的配置：
 
 type属性取值：POOLED UNPLLOED JNDI
 
-### mybatis中的动态sql语句
+## mybatis中的动态sql语句
 
 项目链接：<a href="https://github.com/senhao1104/ssm/tree/master/01_Mybatis/04_mybatis_dynamicSQL">04_mybatis_dynamicSQL</a>
 
-#### 标签：&lt;where&gt; &lt;if&gt; 
+### 标签：&lt;where&gt; &lt;if&gt; 
 
 ```java
 <select id="findUserByCondition" parameterType="domain.user" resultType="domain.User">
@@ -123,7 +123,7 @@ type属性取值：POOLED UNPLLOED JNDI
 </select>
 ```
 
-#### 标签：&lt;foreach&gt;
+### 标签：&lt;foreach&gt;
 
 ```java
 <select id="findUserInIds" resultType="domain.User" parameterType="domain.QueryVo">
@@ -139,7 +139,7 @@ type属性取值：POOLED UNPLLOED JNDI
 </select>
 ```
 
-### mybatis中的事务
+## mybatis中的事务
 
 1. 什么是事务
 2. 事务的四大特性 ACID
@@ -148,7 +148,7 @@ type属性取值：POOLED UNPLLOED JNDI
 
 它是通过sqlsession对象的commit方法和rollback方法实现事务的提交和回滚
 
-### mybatis中的多表查询
+## mybatis中的多表查询
 
 表之间的关系有几种：
 一对多、多对一、一对一、多对多
@@ -162,7 +162,7 @@ type属性取值：POOLED UNPLLOED JNDI
 如果拿出每一个订单，它都只能属于一个用户
 所以mybatis就把多对一看成了一对一
 
-#### 示例一：用户和账户(一对一、一对多)
+### 示例一：用户和账户(一对一、一对多)
 
 项目链接：<a href="https://github.com/senhao1104/ssm/tree/master/01_Mybatis/05_mybatis_one2many">05_mybatis_one2many</a>
 
@@ -183,7 +183,7 @@ type属性取值：POOLED UNPLLOED JNDI
 查询用户时，可以同时得到用户下所包含的账户信息
 查询账户时，可以同时得到账户的所属用户信息
 
-#### 示例二：用户和角色(多对多)
+### 示例二：用户和角色(多对多)
 
 项目链接：<a href="https://github.com/senhao1104/ssm/tree/master/01_Mybatis/06_mybatis_many2many">06_mybatis_many2many</a>
 
@@ -205,3 +205,68 @@ type属性取值：POOLED UNPLLOED JNDI
 4. 实现配置：
 查询用户时，可以同时得到用户下所包含的角色信息
 查询角色时，可以同时得到角色的所属用户信息
+
+## mybatis中的延迟加载
+
+项目链接：<a href="https://github.com/senhao1104/ssm/tree/master/01_Mybatis/07_mybatis_lazy">07_mybatis_lazy</a>
+
+#### 什么是延迟加载
+
+在真正使用数据时才发起查询，不用的时候不查询。按需加载（懒加载）
+
+#### 什么是立即加载
+
+不管用不用，只要一调用方法，马上发起查询
+	
+在对应的四种表关系中：一对多，多对一，一对一，多对多
+
+	一对多，多对多：通常情况下我们都是采用延迟加载
+	多对一，一对一：通常情况下我们都是采用立即加载
+
+## mybatis中的缓存
+
+#### 什么是缓存
+
+存在于内存中的临时数据
+
+#### 为什么使用缓存
+
+减少和数据库的交互次数，提高执行效率
+
+#### 什么样的数据能使用缓存，什么样的数据不能使用
+
+* 适用于缓存：
+
+经常查询并且不经常改变的
+
+数据的正确与否对最终结果影响不大的
+
+* 不适用于缓存：
+
+经常改变的数据
+数据的正确与否对最终结果影响很大的
+
+例如：商品的库存，银行的汇率，股市的牌价
+
+#### Mybatis中的一级缓存和二级缓存
+
+* 一级缓存：
+
+它指的是Mybatis中SqlSession对象的缓存。
+
+当我们执行查询之后，查询的结果会同时存入到SqlSession为我们提供一块区域中。
+
+该区域的结构是一个Map。当我们再次查询同样的数据，mybatis会先去sqlsession中
+查询是否有，有的话直接拿出来用。
+
+当SqlSession对象消失时，mybatis的一级缓存也就消失了。
+		
+* 二级缓存:
+
+它指的是Mybatis中SqlSessionFactory对象的缓存。由同一个SqlSessionFactory对象创建的SqlSession共享其缓存。
+
+#### 二级缓存的使用步骤：
+
+1. 让Mybatis框架支持二级缓存（在SqlMapConfig.xml中配置）
+2. 让当前的映射文件支持二级缓存（在IUserDao.xml中配置）
+3. 让当前的操作支持二级缓存（在select标签中配置）
